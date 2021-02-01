@@ -1,0 +1,25 @@
+# nacos配置
+server:
+  port: 3377
+
+spring:
+  application:
+    name: nacos-config-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #Nacos服务注册中心地址
+      config:
+        server-addr: localhost:8848 #Nacos作为配置中心地址
+        file-extension: yaml #指定yaml格式的配置
+        group: group_B
+        namespace: e5a24a80-4cb1-485d-bc09-ba1f046decac #不写 默认就是nacos里的public
+
+
+# ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
+# nacos-config-client-dev.yaml
+
+#当group namespace 都不写的时候  取的就是默认的  group默认是DEFAULT_GROUP  namespace默认是public
+#写了的话 就按是 具体写的namespace 和group 去取
+
+
